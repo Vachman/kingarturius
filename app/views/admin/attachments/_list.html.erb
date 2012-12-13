@@ -1,0 +1,72 @@
+<table border="0" cellspacing="0" cellpadding="0" class="index_table images_table">
+  <thead>
+    <tr>
+      <th></th>
+      <th><%= Attachment.human_attribute_name(:picture) %></th>
+      <th><%= Attachment.human_attribute_name(:info) %></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% object.attachments.sorted.each { |attachment| -%>
+      <%= render :partial => 'admin/attachments/image', 
+                 :locals => {:attachment => attachment} %>
+    <% } -%>
+    <%= render :partial => 'admin/attachments/image', :locals => {:object => object, :attachment => nil, :show_delete => false } if object.attachments.blank? %>
+  </tbody>
+
+  </tfoot>
+    <tr>
+      <td colspan="3">
+        <%= content_tag( :input, :type => :submit, :value => t('active_admin.actions.attachment.add'), :id => "add_image_link") {}%>
+      </td>
+    </tr>
+  </tfoot>
+</table>
+
+<%= content_tag(:script, :id => 'new_image', :type => 'text/x-jquery-tmpl') { render :partial => 'admin/attachments/image', :locals => {:object => object, :attachment => nil, :show_delete => true} } %>
+
+<%= file_field_tag 'attachment[image]', :accept => 'image/png,image/gif,image/jpeg', :id => 'new_image_input' %>
+
+<%= javascript_tag do %>
+$(function() {
+  <% session_key_name = Rails.application.config.session_options[:key] %>
+  
+  $('#new_image_input').uploadify({
+    height        : 30,
+    swf           : '/uploadify.swf',
+    uploader      : '<%= admin_attachments_path %>',
+    width         : 120,
+    fileObjName   : 'attachment[image]',
+    formData      : {
+      'attachment[resource_id]' : '<%= object.id %>', 
+      'attachment[resource_type]' : '<%= object.class.name %>',
+      '_http_accept': 'application/json',
+      '<%= session_key_name %>' : encodeURIComponent('<%= u cookies[session_key_name] %>'),
+      'authenticity_token': $("meta[name='csrf-token']").attr('content')
+    }
+  });
+  
+  $('#add_image_link').click(function() {
+    var $new = $($('#new_image').html());
+
+    $new.find('.row_destroy_link').click(function() {
+      $(this).closest('tr').remove();
+      return false;
+    });
+    
+    $new.new_attachment().attachment_image_upload();
+    
+    $('.images_table').append($new);
+    
+    return false;
+  });
+
+  $('.images_table').new_attachment();
+  $('.images_table').attachment_image_upload();
+  $('.images_table').attachment_update_form();
+  $('.images_table').image_destroy_link();
+
+});
+<% end %>

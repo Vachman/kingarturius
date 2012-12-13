@@ -1,0 +1,50 @@
+ru:
+  activerecord:
+    models:
+      customer: "Покупатели"
+    attributes:
+      customer:
+        name: "Контактное лицо"
+        company: "Компания"
+        phone: "Телефон"
+        email: "Email"
+        order_count: "Число заказов"
+        first_order: "Первый заказ"
+        created_at: "Дата регистрации"
+        total_orders: "Всего заказов"
+        total_value: "Общая стоимость"
+        corporate: "Корпоративный клиент"
+    errors:
+      models:
+        customer:
+          attributes:
+            name: 
+              blank: "Поле обязательно для заполнения"
+            email:
+              blank: "Поле обязательно для заполнения"
+              invalid: "Введите Email в формате user@example.com"
+              not_found: "Пользователь не найден"
+            password:
+              blank: "Введите пароль"
+              confirmation: "Введённые пароли не совпадают"
+              too_short: "Длина пароля - минимум 6 символов"
+  
+  simple_captcha:
+    message:
+      customer: "Неверно указан код"
+    
+  active_admin:
+    filters:
+      customer:
+        name: "Поиск по имени"
+        email: "Поиск по Email"
+        phone: "Поиск по номеру телефона"
+    titles:
+      customer:
+        order_history: "История заказов"
+        customer_details: "Информация"
+        order_info: "Выполненные заказы"
+    scopes:
+      all_customers: "Все"
+      individual: "Частные лица"
+      corporate: "Юридические лица"

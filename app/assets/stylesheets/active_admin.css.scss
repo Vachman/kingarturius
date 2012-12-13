@@ -1,0 +1,136 @@
+// Active Admin CSS Styles
+@import "active_admin/mixins";
+@import "active_admin/base";
+
+@import "jquery/jquery.treeview";
+@import "jquery/chosen";
+@import "jquery/uploadify";
+@import "jquery/jquery-ui";
+
+// To customize the Active Admin interfaces, add your
+// styles here:
+
+li.ckeditor {
+  > span {
+    margin-left: 20%;
+  }
+}
+
+.sortable { 
+  list-style-type: none; 
+  margin: 0; 
+  padding: 0; 
+  width: 100%;
+
+  &.variants_list {
+    li {
+      input {
+        width: 95%;
+      }
+    }
+  }
+  
+  li {
+    margin: 0 3px 3px 3px !important; 
+    padding: 0.4em  !important; 
+    padding-right: 1.5em  !important; 
+    padding-left: 1.5em  !important; 
+    position: relative;
+
+    input {
+      width: 20%;
+    }
+  
+    span.sort { 
+      position: absolute; 
+      margin-left: -1.3em; 
+    }
+    
+    span.close { 
+      position: absolute; 
+      right: 0; 
+      top: 0; 
+      cursor: pointer;
+    }
+  }
+}
+
+.images_table tr td.image {
+  width: 100px;
+}
+
+.images_table tr td.destroy {
+  width: 100px;
+}
+
+.images_table .label {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+#extra_attachments_files .file {
+  float: left;
+  padding: 15px;
+  position: relative;
+  border: 0/*1px solid #CCCCCC*/;
+  margin: 2px;
+  background: none;
+  width: 405px;
+
+  .close {
+    cursor: pointer;
+    position: absolute;
+    top: 0px;
+    left: 70px;
+  }
+
+  input.name, input.submit {
+    position: relative;
+    top: -15px;
+  }
+
+  input.name {
+    width: 170px;
+    margin-left: 30px;
+  }
+
+  input.submit {
+    width: 100px;
+    margin-left: 10px;
+  }
+}
+
+.spacer {
+  height: 20px;
+}
+
+.variants_type_list {
+  & > li {
+    border-bottom: 1px solid #E8E8E8;
+  }
+
+  .sortable {
+    padding-left: 20%;
+    width: 78%;
+  }
+
+  .add_variant_link_wrapper {
+    padding-left: 20%;
+  }
+}
+
+form.attachment {
+  .boolean {
+    position: relative;
+    float: right;
+  }
+
+  .attachment_submit {
+    position: relative;
+    float: left;
+  }
+}
+
+form fieldset > ol > li p.inline-errors {
+  text-transform: none;
+}

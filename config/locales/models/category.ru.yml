@@ -1,0 +1,45 @@
+ru:
+  activerecord:
+    models:
+      category: "Меню"
+    attributes:
+      category:
+        title: "Заголовок"
+        goods: "Позиции"
+        link: "Ссылка"
+        visible: "Отображается"
+
+  active_admin:
+    titles:
+      category:
+        index_tree: "Структура меню"
+        tree: "Структура меню"
+        edit: "Редактирование раздела"
+    actions:
+      category:
+        destroy: "Удалить"
+        show: "Позиций: %{count}"
+    status_tags:
+      category:
+        visible: "Да"
+        invisible: "Нет"
+
+  formtastic:
+    labels:
+      category:
+        name: "Название раздела"
+        description: "Описание раздела"
+        virtual: "Виртуальный раздел?"
+        parent: "Родительский раздел"
+    hints:
+      category:
+        new:
+          name: "Введите название раздела"
+          description: "Напишите описание раздела меню"
+        edit:
+          name: "Вы можете изменить заголовок раздела"
+          description: "Отредактируйте описание раздела"
+    actions:
+      category:
+        create: "Создать раздел"
+    

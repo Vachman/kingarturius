@@ -1,0 +1,20 @@
+<div class="password_recovery">
+  <h2>Восстановление пароля</h2>
+  <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :class => "yellow_form" }) do |f| %>
+  	<p>
+      <%= f.label :email, 'Email:' %>
+      <%= f.text_field :email, :class => "standart_inptxt" %>
+      <span class="error"><%= resource.errors[:email].first %></span>
+    </p>
+
+    <p>
+      <%= f.submit "Восстановить пароль", :class => "blue_inp_bg" %>
+    </p>
+    
+    <p class="form_link">
+      <%= link_to "Войти", new_customer_session_path %>
+      <span class="bull">&bull;</span>
+      <%= link_to "Зарегистрироваться", new_customer_registration_path %>
+    </p>
+  <% end %>
+</div>

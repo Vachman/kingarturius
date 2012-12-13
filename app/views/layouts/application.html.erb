@@ -1,0 +1,267 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <%= display_meta_tags :site => 'Squat cafe' %>
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" href="<%= image_path 'site/favicon.ico' %>" type="image/x-icon">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700&subset=latin,cyrillic-ext,cyrillic' rel='stylesheet' type='text/css'>  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= javascript_tag do %>
+    <%= yield :page_javascript %>
+  <% end %>
+  <%= javascript_tag do %>
+    window.events = <%=raw Event.of_current_year.visible.for_calendar.to_json(:only => [:name], :methods =>[:date_json]) %>;
+  <% end %>
+  <%= csrf_meta_tags %>
+  <%= yield :fb_meta %>
+</head>
+<body>
+
+  <div id="container">
+    <header>
+		  <div class="head">
+		    <div class="head-cont">
+          <%= link_to image_tag('site/logo.png'), root_path, :class => 'head-left' %>
+          <% banner = StaticPage.visible.find_by_url_path('index/banner') -%>
+          <% if !banner.nil? && banner.attachments.count > 0 -%>
+            <% att = banner.attachments.first %>
+            <%= link_to image_tag(att.image.url), (att.link.blank? ? static_page(banner) : att.link) , :class => 'head-banner' %>
+          <% end -%>
+          
+          <div class="head-right">
+            <%= link_to image_tag('site/squatcafe.png'), root_path %>
+            <span id="head_phone">
+              <span id="head_phone_small">+7 (495)</span>
+              <span id="head_phone_big">625 6990</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    
+      <div class="menu_wrapper">
+    	  <div class="menu" id="menu_fixed_scroll">
+    	    <div class="menu-cont">
+    		    <ul class="menu-main">
+              <% StaticPage.site_roots.navigation.each do |page| -%>
+              <li>
+                <%= link_to page.title, static_page(page), :class => (page == @page ? 'selected' : '') %>
+              </li>
+              <% end -%>    
+            </ul>
+        
+            <div class="right-column">
+              <%= form_tag catalog_search_path, :method => :get do  %>
+			          <input type="text" name="keyword" id="keyword" value="" class="placeholder" placeholder="Поиск" />
+			          <input type="submit" id="ok_search" value="OK" class="button" />
+		          <% end %>
+            </div>
+          </div>
+	      </div>
+      </div>
+    </header>
+    
+    
+    <div id="main" role="main">
+		<!--Content!-->
+		<div class="content">
+			<div class="inner">
+        <%= yield %>
+        
+        <%= render :partial => "site/soon" %>
+			</div>
+			<div class="right-column" id="sidebar_fixed_scroll">
+				<!--BLOCK START !-->
+				<div class="block">
+					<div class="block-header"> 
+						<a href="#"><div class="block-header-title">КАЛЕНДАРЬ</div>
+<!--						<div class="block-header-arrow"><a class="arrow-down"></a></div>-->
+						<div class="clearfix"></div></a> 
+					</div>
+					
+					<div class="block-content" id="calendar">
+					</div>
+				</div>
+				<!--BLOCK END !-->
+
+				<!--BLOCK START !-->
+				<div class="block">
+					<div class="block-header"> 
+						<a href="#"><div class="block-header-title">МЕНЮ</div>
+<!--						<div class="block-header-arrow"><a class="arrow-down"></a></div>-->
+						<div class="clearfix"></div></a> 
+					</div>
+					
+					<div class="block-content" id="quickmenu">
+            <ul class="quickmenu_list block-ul">
+              <% Category.site_roots.navigation.each do |cat| -%>
+                <li>
+                  <%= link_to cat.name, category_path(cat.url_path) %>
+              	</li>
+              <% end -%>
+            </ul>	
+					</div>
+				</div>
+				<!--BLOCK END !-->
+<% 
+=begin
+				<!--BLOCK START !-->
+				<div class="block">
+					<div class="block-header"> 
+						<a href="#"><div class="block-header-title">ПРИГЛАШЕНИЕ</div>
+						<!--<div class="block-header-arrow"><a class="arrow-down"></a></div>-->
+						<div class="clearfix"></div></a> 
+					</div>
+					
+					<div class="block-content register">
+						Хочу получать приглашения на самые интересные мероприятия:
+						<form>
+						  <!--
+							<ul id="attselect" class="block-ul">
+								
+								<li id="item1" >ВСЕ</li>
+								<li id="item2" class="selected">ВЫБОРОЧНО</li>
+								<div class="clearfix"></div>
+							</ul>
+							-->
+							<div id="attselect-items" >
+							<select multiselect id="themes">
+							  <option value=""></option>
+								<option value="1">Кино, поэзия</option>
+								<option value="2">Гастрономия, дегустация</option>
+								<option value="3">Джазовые концерты</option>
+								<option value="4">Концерты, вечеринки</option>
+								<option value="5">Выставки, презентации</option>
+								<option value="6">Акции, спецпредложения</option>
+							</select>
+							</div>
+							<div class="userdata">
+							  <div class="field">
+							    <div class="input">
+							      <input></input>
+							    </div>							    
+							    <div class="title">Имя:</div>
+							  </div>
+
+							  <div class="field">
+							    <div class="input">
+							      <input value="+7"></input>
+							    </div>
+							    <div class="title">Телефон: </div>
+							  </div>
+							  <div class="field">
+							    <div class="input">
+							      <input></input>
+							    </div>
+							    <div class="title">Email:</div>
+							  </div>							  
+							  <div class="field birthday">
+							    <div class="input">
+    								<input id="birthday"></input>
+							    </div>
+							    <div class="title">Дата рождения:</div>
+							  </div>
+							</div>
+							
+							<input type="submit" id="submit" value="ОТПРАВИТЬ"/>
+						</form>
+					</div>
+				</div>
+				<!--BLOCK END !-->
+=end
+%>        
+        <div class="social-nets">
+          <%= link_to image_tag("site/facebook.png"), "http://www.facebook.com/squatcafe", :rel => "nofollow", :class => 'fb', :target => '_blank' %>
+      		<div class="separator"></div>
+      		<%= link_to image_tag("site/vkontakte.png"), "http://vk.com/squatcafe", :rel => "nofollow", :class => 'vk', :target => '_blank' %>
+      		<div class="separator"></div>
+      		<%= link_to image_tag("site/twitter.png"), "http://twitter.com/squatcafe", :rel => "nofollow", :class => 'tw', :target => '_blank' %>
+      		<div class="separator"></div>
+      		<%= link_to image_tag("site/lookatme.png"), "http://www.lookatme.ru/cities/moscow/places/14513-squat-kafe", :rel => "nofollow", :class => 'lj', :target => '_blank' %>
+      		<div style="clear: both;"></div>
+      	</div>
+        
+			</div>
+		</div>
+		<!--End of Content!-->	
+
+
+    <div class="clearfix"></div>
+    </div>
+    
+  </div> <!--! end of #container -->
+    <footer>
+      <div class="footer-cont">
+        <% parents = StaticPage.site_roots.navigation.all -%>
+        <% expanded = StaticPage.find_by_url_path('club') ||
+                      StaticPage.root -%>
+        <% children = expanded.children.navigation -%>
+        
+        <ul class="footer-c1">
+          <% (parents[0..2] || []).each do |page| -%>
+            <li>
+              <%= link_to page.title, static_page(page), :class => (page == @page ? 'selected' : '') %>
+            </li>
+          <% end -%>    
+    		</ul>
+    		<ul class="footer-c2">
+          <% (parents[3..-1] || []).each do |page| -%>
+            <li>
+              <%= link_to page.title, static_page(page), :class => (page == @page ? 'selected' : '') %>
+            </li>
+          <% end -%>    
+		    </ul>
+    		<ul class="footer-c2">
+          <% (children[0..2] || []).each do |page| -%>
+            <li>
+              <%= link_to page.title, static_page(page), :class => (page == @page ? 'selected' : '') %>
+            </li>
+          <% end -%>    
+  		  </ul>
+    		<ul class="footer-c3">
+          <% (children[3..-1] || []).each do |page| -%>
+            <li>
+              <%= link_to page.title, static_page(page), :class => (page == @page ? 'selected' : '') %>
+            </li>
+          <% end -%>    
+		    </ul>
+
+    		<div class="right-column">
+          <%= image_tag 'site/squatsmall.png', :width => '100px' %>
+  			</div>
+  
+        <div class="clearfix"></div>
+        <div class="copyright">© 2009-2012 Squat-cafe Рождественка 12/1 (м.Кузнецкий Мост, вход с Варсонофьевского пер.) Тел: (495)625 69 90 go@squatcafe.ru</div>
+      </div>   
+    </footer>
+
+  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+       chromium.org/developers/how-tos/chrome-frame-getting-started -->
+  <!--[if lt IE 7 ]>
+    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+    <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+  <![endif]-->
+  
+  <!-- Yandex.Metrika counter -->
+  <div style="display:none;"><script type="text/javascript">
+  (function(w, c) {
+      (w[c] = w[c] || []).push(function() {
+          try {
+              w.yaCounter13063561 = new Ya.Metrika({id:13063561, enableAll: true, webvisor:true});
+          }
+          catch(e) { }
+      });
+  })(window, "yandex_metrika_callbacks");
+  </script></div>
+  <script src="//mc.yandex.ru/metrika/watch.js" type="text/javascript" defer="defer"></script>
+  <noscript><div><img src="//mc.yandex.ru/watch/13063561" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
+
+  <%= javascript_include_tag "http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4f5f42122541b536" %>
+</body>
+</html>
