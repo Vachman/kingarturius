@@ -29,8 +29,6 @@ class Event < ActiveRecord::Base
 
   validates :name, :presence => true, 
                    :length => { :maximum => 255 }
-  validates :price, :presence => true,
-                   :length => { :maximum => 255 }
   validates :date, :presence => true
 
   VISIBLE = "visible"

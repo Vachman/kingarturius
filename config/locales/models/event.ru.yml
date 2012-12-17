@@ -1,7 +1,7 @@
 ru:
   activerecord:
     models:
-      event: "События"
+      event: "Блог"
     attributes:
       event:
         date: "Дата и время"

@@ -25,14 +25,12 @@ ActiveAdmin.register Event do
     column :name do |event|
       link_to content_tag('nobr', event), edit_admin_event_path(event)
     end
-
-    column :price, :sortable => false
+    
     column :date
 
     column :visible do |good|
       status_tag(I18n.t("active_admin.status_tags.good.#{good.status}"), good.visible? ? :ok : :error)
     end
-
   end
 
 end

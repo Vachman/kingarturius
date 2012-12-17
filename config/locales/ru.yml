@@ -41,8 +41,8 @@ ru:
       canceled: "Отменён"
 
   customer_email:
-    subject: Интернет-магазин Oltis-Lux.com
-    order_subject: "Интернет-магазин мебели OLTIS - спасибо за  Ваш заказ"
+    subject: ''
+    order_subject: ''
     not_email_present: ""
     delivery_success:
       callback: Спасибо за Ваше сообщение. Мы перезвоним Вам в ближайшее время

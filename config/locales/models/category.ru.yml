@@ -1,7 +1,7 @@
 ru:
   activerecord:
     models:
-      category: "Меню"
+      category: "Недвижимость"
     attributes:
       category:
         title: "Заголовок"
@@ -12,7 +12,7 @@ ru:
   active_admin:
     titles:
       category:
-        index_tree: "Структура меню"
+        index_tree: "Категории"
         tree: "Структура меню"
         edit: "Редактирование раздела"
     actions:

@@ -1,7 +1,7 @@
 ActiveAdmin.register PhotoAlbum, {:sort_order => 'position_asc'} do
   filter :name
   filter :created_at
-  
+
   form :partial => 'form'
 
   controller do
@@ -21,10 +21,10 @@ ActiveAdmin.register PhotoAlbum, {:sort_order => 'position_asc'} do
     column :name do |photo_album|
       link_to photo_album, edit_admin_photo_album_path(photo_album)
     end
-    
+  
     column "" do |photo_album|
       acc = ""
-      
+    
       acc += photo_album.first? ? 
             image_tag('arrow_up_notactive.png') :  
             link_to(image_tag('arrow_up.png'), 
@@ -51,19 +51,18 @@ ActiveAdmin.register PhotoAlbum, {:sort_order => 'position_asc'} do
       link_to t('active_admin.actions.photo_album.destroy'), admin_photo_album_path(photo_album), :method => :delete, :confirm => t('are_you_shure') 
     end
   end
-  
+
   member_action :move_higher, :method => :put do
     photo_album = PhotoAlbum.find(params[:id])
     photo_album.move_higher
-    
+  
     redirect_to admin_photo_albums_path
   end
 
   member_action :move_lower, :method => :put do
     photo_album = PhotoAlbum.find(params[:id])
     photo_album.move_lower
-    
+  
     redirect_to admin_photo_albums_path
   end
-  
-end
+end if false

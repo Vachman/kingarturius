@@ -1,0 +1,58 @@
+ru:
+  activerecord:
+    models:
+      request: "Заявки"
+    attributes:
+      request:
+        id: '№'
+        full_name: "ФИО"
+        request_type: 'Тип заявки'
+        created_at: 'Создана'
+        updated_at: 'Обновлена'
+        phone: "Номер телефона"
+        email: "Эл. почта"
+        information: "Инофомация"
+
+  active_admin:
+    filters:
+      request:
+        name: "Поиск по ФИО"
+    titles:
+      request:
+        recent_requests: "Новые заявки"
+        more: 'Подробнее'
+    actions:
+      request:
+        destroy: "Удалить"
+    status_tags:
+      request:
+        visible: "Да"
+        invisible: "Нет"
+        in_export: "Экспортировать"
+        not_in_export: "Не экспортировать"
+  
+  formtastic:
+    titles:
+      params: "Доп. параметры"
+      order_variants: "Варианты блюда"
+      similar_requests: "Похожие блюда"
+    labels:
+      request:
+        category: "Раздел"
+        name: "Название блюда"
+        description: "Описание блюда"
+        articul: "Артикул"
+        price: "Цена (руб)"
+    hints:
+      request:
+        new:
+          name: "Введите название блюда"
+          description: "Введите описание блюда (не обязательно)"
+          price: "Введите цену блюда (в рублях)"
+        edit:
+          name: "Отредактируйте название блюда"
+          description: "Добавьте или измените описание блюда"
+          price: "Откорректируйте цену на блюдо"
+    actions:
+      request:
+        create: "Создать позицию меню"

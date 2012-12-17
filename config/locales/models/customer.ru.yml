@@ -1,7 +1,7 @@
 ru:
   activerecord:
     models:
-      customer: "Покупатели"
+      customer: "Пользователи"
     attributes:
       customer:
         name: "Контактное лицо"
