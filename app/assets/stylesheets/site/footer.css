@@ -1,0 +1,38 @@
+#copyright p {
+  margin: 10px 0px;
+  padding: 0;
+  
+  font-size: 12px;
+  color: #958a85;
+  
+  line-height: 10px;
+}
+
+#footer .column-2 {
+  float: left;
+  width: 50%;
+  height: 100%;
+}
+
+#footer .footer-content h2 {
+  font-size: 18px;
+  font-style: italic;
+	font-weight: lighter;
+	
+	color: #d9d5d4;
+	text-shadow: 0px -1px 1px #6f5347;
+	
+	margin-top: 7px;
+	margin-bottom: 10px;
+}
+
+#footer .footer-content p {
+  margin: 0;
+  padding: 0;
+  
+  font-size: 14px;
+  font-style: italic;
+  
+  color: #cbb8b0;
+  text-shadow: 0px -1px 1px #6f5347;
+}
