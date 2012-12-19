@@ -3,7 +3,7 @@ html {
 }
 
 body {
-  background-image: url(../img/background.jpg);
+  background-image: url(/assets/site/background.jpg);
   background-color: #ecd0b1;
   background-position: center 0px;
   font-family: Georgia, "Times New Roman", Times, serif;
@@ -27,7 +27,7 @@ body {
 }
 
 #castle {
-  background-image: url(../img/castle-with-title.jpg);
+  background-image: url(/assets/site/castle-with-title.jpg);
   width: 1600px;
   height: 1276px;
   z-index: -10;
@@ -37,7 +37,7 @@ body {
 }
 
 #left-inner-shadow {
-  background-image: url(../img/left-inner-shadow.png);
+  background-image: url(/assets/site/left-inner-shadow.png);
   width: 70px;
   height: 100%;
   
@@ -48,7 +48,7 @@ body {
 }
 
 #right-inner-shadow {
-  background-image: url(../img/right-inner-shadow.png);
+  background-image: url(/assets/site/right-inner-shadow.png);
   width: 102px;
   height: 100%;
   
@@ -59,7 +59,7 @@ body {
 }
 
 #left-content-border {
-  background-image: url(../img/left-content-border.png);
+  background-image: url(/assets/site/left-content-border.png);
   width: 35px;
   height: 100%;
   
@@ -70,7 +70,7 @@ body {
 }
 
 #right-content-border {
-  background-image: url(../img/right-content-border.png);
+  background-image: url(/assets/site/right-content-border.png);
   width: 41px;
   height: 100%;
   
@@ -81,7 +81,7 @@ body {
 }
 
 #top-content-border {
-  background-image: url(../img/top-content-border.png);
+  background-image: url(/assets/site/top-content-border.png);
   width: 1021px;
   height: 30px;
   
@@ -97,7 +97,7 @@ body {
 
 #content-container {
 	float: left;
-	background-image: url(../img/content.jpg);
+	background-image: url(/assets/site/content.jpg);
 	background-color: #e2bc94;
 	background-position: center 11px;
 	padding-bottom: 230px;
@@ -107,6 +107,7 @@ body {
 
 #content {
   margin-left: 310px;
+  position: relative;
 }
 
 #sidebar {
