@@ -26,7 +26,7 @@ namespace :deploy do
   task :start do ; end
   task :stop do ; end
   task :restart, :roles => :app, :except => { :no_release => true } do
-#    run "touch #{File.join(current_path,'tmp','restart.txt')}"
+    run "touch #{File.join(current_path,'tmp','restart.txt')}"
   end
 
   desc "Create shared files and folders"
@@ -63,6 +63,7 @@ namespace :deploy do
   task :apply_migrations, :roles => :db do
     run "cd #{release_path} && RAILS_ENV=production bundle exec rake db:migrate"
   end
+  
   
   after 'deploy', 'deploy:cleanup'
 end

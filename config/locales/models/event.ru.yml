@@ -13,7 +13,8 @@ ru:
         visible: "Отображается"
   active_admin:
     scopes:
-      all_events: "Все события"
-      future: "Предстоящие"
-      past: "Прошедшие"
-      featured: "На главной"
+      all_events: "Все статьи"
+      services: "Наши услуги"
+      news: "Новости на рынке"
+      mortgages: "Ипотечные программы"
+      informations: "Полезная информация"

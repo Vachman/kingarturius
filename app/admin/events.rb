@@ -1,11 +1,11 @@
 ActiveAdmin.register Event do
   scope :all_events, :default => true
-  scope :future
-  scope :past
-  scope :featured
+  scope :news
+  scope :informations
+  scope :services
+  scope :mortgages
 
   filter :name
-  filter :date
 
   form :partial => 'form'
 
@@ -13,7 +13,7 @@ ActiveAdmin.register Event do
     def new
       @event = Event.new
       @event.visible ||= true
-      @event.date ||= Time.now
+      #@event.date ||= Time.now
     end
 
     def show

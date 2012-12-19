@@ -4,6 +4,7 @@ ActiveAdmin.register StaticPage do
 
   form :partial => 'form'
 
+
   controller do
     def index
       redirect_to index_tree_admin_static_pages_path
