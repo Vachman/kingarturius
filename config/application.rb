@@ -61,8 +61,8 @@ module RailsShop
     config.assets.version = '1.0'
     config.assets.precompile += %w[active_admin.css active_admin.js]
 
-    #config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-    #config.action_mailer.asset_host = 'localhost:3000'
+    config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+    config.action_mailer.asset_host = 'localhost:3000'
     #config.action_mailer.smtp_settings = {
     #  :address         => 'mail.1gb.ru',
     #  :port            => 25,
@@ -74,5 +74,18 @@ module RailsShop
     #config.action_mailer.delivery_method = :smtp
     #config.action_mailer.raise_delivery_errors = true
     config.action_mailer.perform_deliveries = false
+    
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      :address => "smtp.gmail.com",
+      :port => 587,
+      :domain => 'kingarturius.ru',
+      :user_name => 'site@kingarturius.ru',
+      :password => 'sitepass',
+      :authentication => 'plain',
+      :enable_starttls_auto => true}
+
   end
 end
+
+
