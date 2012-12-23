@@ -67,6 +67,10 @@ RailsShop::Application.routes.draw do
     get '/page/*path', :action => :static_page, :as => 'static_page', :constraints => StaticPageConstraint
   end
   
+  resources :requests, :only => [:new, :create]  do
+    get :express, :on => :collection 
+  end
+  
   root :to => 'site#index'
 
   # The priority is based upon order of creation:
