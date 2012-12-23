@@ -21,8 +21,8 @@ ru:
     pagination:
       first: "&laquo;"
       last: "&raquo;"
-      previous: "&lsaquo;"
-      next: "&rsaquo;"
+      previous: "предыдущая"
+      next: "следующая"
       truncate: "..."
 
   simple_captcha:

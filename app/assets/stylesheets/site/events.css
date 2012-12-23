@@ -1,0 +1,27 @@
+#content .event {
+  position: relative;
+}
+
+#content .event .short-text {
+  
+}
+
+#content .event.with-image .short-text {
+  
+}
+
+#content .event .image {
+  float: left;
+  margin-right: 30px;
+  margin-bottom: 10px;
+}
+
+#content .event .read-full {
+  text-align: right;
+}
+
+#content .event .read-full a,
+#content .event .back-to-list a {
+  color: inherit;
+  font-weight: bold;
+}

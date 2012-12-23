@@ -1,1 +1,31 @@
+<div class="event<%= event.has_image? ? ' with-image' : '' %>">  
+  <% if single -%>
+    <div class="back-to-list">
+      &lsaquo; <%= link_to "Назад", request.referrer || blog_path(:name => @event.event_category) %>
+    </div>
+  <% end -%>
+  
+  <div class="short-text">
+    <% if event.has_image? -%>
+      <div class="image">
+        <%= image_tag event.image.url(:list_image) %>
+      </div>
+    <% end -%>
+    
+    <%= content_tag :h2, event.name %>
+    
+    <%= raw event.short_description %>
+    
+    <% if single -%>
+      <div class="back-to-list">
+        &lsaquo; <%= link_to "Назад", request.referrer || blog_path(:name => @event.event_category) %>
+      </div>
+    <% else -%>
+      <div class="read-full">
+        <%= link_to "читать далее", blog_event_path(:name => event.event_category, :id => event.id) %> &rsaquo;
+      </div>
+    <% end -%>
+  </div>
+</div>
+
 <hr/>
