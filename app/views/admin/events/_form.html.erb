@@ -2,7 +2,7 @@
   
   <%= f.inputs :info do %>
     <%= f.input :name %>
-    <%#= f.input :category %>
+    <%= f.input :event_category, as: :select, collection: Event.event_categories %>
     <%= f.input :short_description, :as => :ckeditor,
                 :input_html => { :cols => 0,
                                  :width => '77%',

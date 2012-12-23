@@ -26,8 +26,11 @@ ActiveAdmin.register Event do
       link_to content_tag('nobr', event), edit_admin_event_path(event)
     end
     
-    column :date
-
+    column :event_catgory do |ec|
+      I18n.t("active_admin.scopes.#{ec.event_category}")
+    end
+    
+    
     column :visible do |good|
       status_tag(I18n.t("active_admin.status_tags.good.#{good.status}"), good.visible? ? :ok : :error)
     end

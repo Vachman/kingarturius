@@ -13,10 +13,10 @@ class Event < ActiveRecord::Base
   #scope :past, where('date < current_timestamp')
   scope :featured, where(:featured => true)
 
-  scope :news, where(category: 'news')
-  scope :informations, where(category: 'informations')
-  scope :mortgages, where(category: 'mortgages')
-  scope :services, where(category: 'services')
+  scope :news, where(event_category: 'news')
+  scope :informations, where(event_category: 'informations')
+  scope :mortgages, where(event_category: 'mortgages')
+  scope :services, where(event_category: 'services')
   
   #scope :today, where("date_trunc('day', date) = date_trunc('day', current_timestamp)").visible
   #scope :of_current_year, where("extract(year from date) = extract(year from current_timestamp)")
@@ -38,7 +38,14 @@ class Event < ActiveRecord::Base
 
   VISIBLE = "visible"
   INVISIBLE = "invisible"
-#  EVENT_CATEGORIES = [ 'news', 'information', 'mortgage', 'services']
+  EVENT_CATEGORIES = [ 'news', 'informations', 'mortgages', 'services']
+  
+  
+  def self.event_categories
+    event_categories = {}
+    EVENT_CATEGORIES.map { |e| event_categories[I18n.t("active_admin.scopes.#{e}")] = e }
+    event_categories
+  end
 
   def status
     visible ? VISIBLE : INVISIBLE
@@ -48,9 +55,9 @@ class Event < ActiveRecord::Base
     name
   end
 
-  def date_json
-    [date.month, date.day, date.year]
-  end
+#  def date_json
+#    [date.month, date.day, date.year]
+#  end
   
   def self.months
     Event.on_site.select("DISTINCT date_trunc('month', date) as date").collect(&:date).sort
