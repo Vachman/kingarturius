@@ -35,7 +35,8 @@
   color: #53433d;
 }
 
-#content .hr {
+#content div.hr, 
+#content hr {
   border-top: 2px solid #cfb18f;
 	border-bottom: 2px dotted #797067;
 	line-height: 0px;

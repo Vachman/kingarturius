@@ -26,9 +26,9 @@ RailsShop::Application.routes.draw do
     get '/*path', :action => :category,       :as => 'category', :constraints => CategoryConstraint
   end
 
-  scope '/blog', :controller => :events do
-    get '/:name', :action => :index#, :as => 'blog'#, :constraints => BlogConstraint
-    get '/:name/:id', :action => :show#, :constraints => BlogConstraint
+  scope '/blog', :controller => :events, :constraints => BlogConstraint do
+    get '/:name', :action => :index, :as => 'blog'
+    get '/:name/:id', :action => :show, :as => 'blog_event'
   end
 
   scope :controller => :site do
@@ -36,7 +36,7 @@ RailsShop::Application.routes.draw do
     get '/page/*path', :action => :static_page, :as => 'static_page', :constraints => StaticPageConstraint
   end
   
-  resources :requests, :only => [:new, :create]  do
+  resources :requests, :only => [:new, :create] do
     get :express, :on => :collection 
   end
   

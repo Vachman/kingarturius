@@ -1,0 +1,5 @@
+<%= content_tag :h1, I18n.t("active_admin.scopes.#{params[:name]}") %>
+
+<%= render :partial => 'event', :collection => @events %>
+
+<%= paginate @events %>

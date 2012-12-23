@@ -7,6 +7,7 @@ ru:
         date: "Дата и время"
         name: "Название"
         price: "Стоимость"
+        event_category: "Категория"
         short_description: "Краткое описание"
         description: "Полное описание"
         featured: "Отображать на главной"

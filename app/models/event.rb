@@ -67,7 +67,7 @@ class Event < ActiveRecord::Base
   end
 
   def attachment_styles
-    { :main_page_images => "200x240#", :main_page_images_small => "150x150#", :event => "250" } 
+    { :list_image => "172x172#" } 
   end
 
 end

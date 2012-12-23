@@ -8,5 +8,7 @@ class EventsController < ApplicationController
   
   def show
     @event = Event.with_category(request.params[:name]).find_by_id(request.params[:id])
+    
+    redirect_to blog_url unless @event
   end
 end
