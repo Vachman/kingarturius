@@ -10,4 +10,6 @@ $(function() {
   
   var myTextWidth = ($(myHeading).width() - $(myHeading).children('span').width()) / 2;
   $(myHeading).children('.hr').css({width: '' + (myTextWidth - 10) + 'px'});
+  
+  $('img').wrap('<div class="image_wrapper" />');
 });

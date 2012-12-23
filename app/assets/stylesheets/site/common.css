@@ -1,0 +1,49 @@
+#content div.image_wrapper {
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  
+  border: 3px solid #513e2d;
+  overflow: hidden;
+  
+  -webkit-box-shadow: #8c7559 1px 1px 1px;
+  -moz-box-shadow: #8c7559 1px 1px 1px; 
+  box-shadow: #8c7559 1px 1px 1px;
+  
+  display: inline-block;
+}
+
+#content div.hr, 
+#content hr {
+  border-top: 2px solid #cfb18f;
+	border-bottom: 2px dotted #797067;
+	line-height: 0px;
+	height: 0px;
+	display: block;
+	margin: 20px 0;
+}
+
+#content .pagination {
+  text-align: center;
+  font-weight: bold;
+  position: relative;
+}
+
+#content .pagination a {
+  color: inherit;
+}
+
+#content .pagination .next,
+#content .pagination .prev {
+  position: absolute;
+  display: block;
+  top: 0px;
+}
+
+#content .pagination .next {
+  right: 0px;
+}
+
+#content .pagination .prev {
+  left: 0px;
+}

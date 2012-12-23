@@ -65,6 +65,18 @@ class Event < ActiveRecord::Base
   def self.months
     Event.on_site.select("DISTINCT date_trunc('month', date) as date").collect(&:date).sort
   end
+  
+  def has_image?
+    attachments.count > 0
+  end
+  
+  def image
+    if has_image?
+      (attachments.main.first || attachments.sorted.first).image
+    else
+      nil
+    end
+  end
 
   def attachment_styles
     { :list_image => "172x172#" } 
