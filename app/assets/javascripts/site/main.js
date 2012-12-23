@@ -3,7 +3,7 @@ $(function() {
   $('#navigation ul a:last').addClass('last');
   
   var myHeading = $('h1'),  
-      myHeadingText = $(myHeading).text(),  
+      myHeadingText = $(myHeading).html(),  
       myFullText = '<div class="hr after"></div><span>' + myHeadingText + '</span><div class="hr before"></div>';
 
   $(myHeading).html(myFullText);

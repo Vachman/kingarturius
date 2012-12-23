@@ -26,24 +26,4 @@ class SiteController < ApplicationController
       redirect_to @page.redirect_url
     end
   end
-
-  def feedback
-    data = params[:feedback]
-    if data[:email].blank?
-      flash[:error] = I18n.t('customer_email.not_email_present')
-    else
-      begin
-        FeedbackMailer.customer_email(data).deliver
-        FeedbackMailer.admin_email(data).deliver
-  
-        flash[:notice] = I18n.t("customer_email.delivery_success.#{data[:callback] ? 'callback' : 'email'}")
-      rescue Exception => e
-        flash[:error] = I18n.t('customer_email.delivery_error')
-
-      end
-    end
-
-    redirect_to request.referrer
-  end
-
 end

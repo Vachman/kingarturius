@@ -1,23 +1,12 @@
 class EventsController < ApplicationController
   def index
-    redirect_to :action => :bymonth, :year => Date.today.year, :month => ("%02d" % Date.today.month)
+    @perpage = params[:perpage].to_i > 0 ? params[:perpage].to_i : 10
+    @page = params[:page].to_i > 0 ? params[:page].to_i : 1
+    
+    @events = Event.with_category(params[:name]).on_site.page(@page).per(@perpage)
   end
   
-  def bymonth
-    @events = Event.on_site.by_year_and_month(params[:year], params[:month])
-    @current_event = Event.find_by_id(flash[:current_event_id])
-  end
-
-  def bydate
-    @current_event = Event.on_site.where(["date_trunc('day', date) = ?", params[:date].to_date]).first
-    
-    flash[:current_event_id] = @current_event.id
-  end
-  
-  def bydate_and_id
-    @current_event = Event.on_site.where(["date_trunc('day', date) = ?", params[:date].to_date]).where(:id => params[:id].to_i).first
-    
-    flash[:current_event_id] = @current_event.id
-    render :action => 'bydate'
+  def show
+    @event = Event.with_category(request.params[:name]).find_by_id(request.params[:id])
   end
 end

@@ -26,6 +26,9 @@ class Event < ActiveRecord::Base
 #  scope :site_future, future.visible.inv_sorted
   scope :site_featured, featured.on_site
   
+  scope :with_category, lambda { |cat|
+    where :event_category => cat.to_s
+  }
   scope :by_year_and_month, lambda { |year, month|
     events_date = Date.new(year.to_i, month.to_i) rescue Date.today
     
@@ -38,7 +41,7 @@ class Event < ActiveRecord::Base
 
   VISIBLE = "visible"
   INVISIBLE = "invisible"
-  EVENT_CATEGORIES = [ 'news', 'informations', 'mortgages', 'services']
+  EVENT_CATEGORIES = [ 'news', 'informations', 'mortgages', 'services' ]
   
   
   def self.event_categories

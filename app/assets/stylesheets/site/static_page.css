@@ -6,6 +6,7 @@
 #content h1 {
   font-size: 24px;
   text-align: center;
+  position: relative;
 }
 
 #content h1 span {

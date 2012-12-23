@@ -4,34 +4,15 @@ Dir["#{::Rails.root.to_s}/lib/route_constraints/*"].each { |path|
 }
 
 RailsShop::Application.routes.draw do
-  get "photo/index"
-
   ActiveAdmin.routes(self)
   
   devise_for :admin_users, ActiveAdmin::Devise.config
-  devise_for :customers
-  match '/customers/edit', 
-    :controller =>'Devise::RegistrationsController', 
-    :action => 'edit', :as => 'customer_root'
-  
-  scope '/wishlist', :controller => :wishlist do
-    get   '', :action => :index,    :as => 'wishlist'
-    post  '/add_good',              :as => 'wishlist_add_good'
-    post  '/remove_good',           :as => 'wishlist_remove_good'
-  end if false
+  #devise_for :customers
+  #match '/customers/edit', 
+  #  :controller =>'Devise::RegistrationsController', 
+  #  :action => 'edit', :as => 'customer_root'
 
-  scope '/cart', :controller => :cart do 
-    get   '', :action => :index,    :as => 'cart'
-    get   '/history',               :as => 'cart_history'
-    post  '/add_good',              :as => 'cart_add_good'
-    post  '/remove_good',           :as => 'cart_remove_good'
-    post  '/recalculate',           :as => 'cart_recalculate'
-    post  '/purchase',              :as => 'cart_purchase'
-    get   '/purchase/complete', :action => :purchase_complete,
-                                    :as => 'cart_purchase_complete'
-  end if false
-
-  scope '/menu', :controller => :catalog do
+  scope '/catalog', :controller => :catalog do
     get   '', :action => :index
     #get   '/compare',                         :as => 'catalog_compare'
     #post  '/add_to_compare',                  :as => 'catalog_add_to_compare'
@@ -45,24 +26,12 @@ RailsShop::Application.routes.draw do
     get '/*path', :action => :category,       :as => 'category', :constraints => CategoryConstraint
   end
 
-  scope :controller => :photo do
-    get '/photo', :action => :index, :as => 'photo'
-    get '/photo/:id', :action => :single, :as => 'single_photo'
-    get '/photo/album/:id', :action => :album, :as => 'photo_album'
-  end
-
-  scope :controller => :events do
-    get '/events/bydate/:date', :action => :bydate, :as => 'events_bydate', :date => /\d{2}\.\d{2}\.\d{4}/
-    get '/events/bydate/:date/:id', :action => :bydate_and_id, :as => 'events_bydate_and_id', :date => /\d{2}\.\d{2}\.\d{4}/
-    
-    get '/events/:year/:month', :action => :bymonth, :as => 'events_bymonth', :year => /\d{4}/, :month => /\d{1,2}/
-    get '/events', :action => :index, :as => 'events'
+  scope '/blog', :controller => :events do
+    get '/:name', :action => :index#, :as => 'blog'#, :constraints => BlogConstraint
+    get '/:name/:id', :action => :show#, :constraints => BlogConstraint
   end
 
   scope :controller => :site do
-    post '/feedback', :action => 'feedback', :as => 'feedback'
-    
-    match "/butik" => redirect("/page/butik")
     # Constraint class in lib/StaticPageConstraint.rb
     get '/page/*path', :action => :static_page, :as => 'static_page', :constraints => StaticPageConstraint
   end
