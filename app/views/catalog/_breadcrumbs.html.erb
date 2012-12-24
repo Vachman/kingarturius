@@ -1,0 +1,10 @@
+<% if @category -%>
+  <div class="breadcrumbs">
+    <span><%= link_to "Каталог", catalog_path %></span>
+    
+    <% @category.self_and_ancestors.each do |cat| -%>
+      &nbsp;/&nbsp
+      <span class="<%= 'current' if cat == @category %>"><%= link_to cat.name, category_path(cat.url_path) %></span>
+    <% end -%>
+  </div>
+<% end -%>

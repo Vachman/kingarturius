@@ -27,4 +27,9 @@ protected
   def init_compare
     session[:compare] ||= {}
   end
+  
+  def prepare_paginator
+    @perpage = params[:perpage].to_i > 0 ? params[:perpage].to_i : 10
+    @page = params[:page].to_i > 0 ? params[:page].to_i : 1
+  end
 end

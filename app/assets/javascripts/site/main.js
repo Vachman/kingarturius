@@ -12,4 +12,6 @@ $(function() {
   $(myHeading).children('.hr').css({width: '' + (myTextWidth - 10) + 'px'});
   
   $('img').wrap('<div class="image_wrapper" />');
+  
+  $('.image a.lightbox').lightBox();
 });

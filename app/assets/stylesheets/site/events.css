@@ -2,6 +2,15 @@
   position: relative;
 }
 
+#content .event.with-image {
+  min-height: 200px;
+}
+
+#content .event.with-extra-images {
+  min-height: 250px;
+}
+
+
 #content .event .short-text {
   
 }

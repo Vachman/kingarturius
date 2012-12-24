@@ -13,15 +13,10 @@ RailsShop::Application.routes.draw do
   #  :action => 'edit', :as => 'customer_root'
 
   scope '/catalog', :controller => :catalog do
-    get   '', :action => :index
-    #get   '/compare',                         :as => 'catalog_compare'
-    #post  '/add_to_compare',                  :as => 'catalog_add_to_compare'
-    #post  '/remove_from_compare',             :as => 'catalog_remove_from_compare'
-    get '/search', :action => :search,         :as => 'catalog_search'
-    get '/export', :action => :export
+    get   '', :action => :index, :as => 'catalog'
     
     # Constraint class in lib/GoodConstraint.rb
-    #get '/*path/goods/:id', :action => :good, :as => 'good', :constraints => GoodConstraint
+    get '/*path/goods/:id', :action => :good, :as => 'good', :constraints => GoodConstraint
     # Constraint class in lib/CategoryConstraint.rb
     get '/*path', :action => :category,       :as => 'category', :constraints => CategoryConstraint
   end

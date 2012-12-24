@@ -32,6 +32,10 @@
   font-weight: normal;
 }
 
+#content h2 a {
+  color: inherit;
+}
+
 #content {
   color: #53433d;
 }

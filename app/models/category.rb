@@ -83,5 +83,21 @@ class Category < ActiveRecord::Base
   def status
     self.visible ? VISIBLE : INVISIBLE
   end
+  
+  def has_image?
+    attachments.count > 0
+  end
+  
+  def image
+    if has_image?
+      (attachments.main.first || attachments.sorted.first).image
+    else
+      nil
+    end
+  end
+
+  def attachment_styles
+    { :list_image => "172x172#" } 
+  end
 
 end

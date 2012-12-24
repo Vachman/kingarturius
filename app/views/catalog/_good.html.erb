@@ -1,23 +1,38 @@
-<li>
-  <% if good.attachments.count > 0 -%>
-    <div class="food-image">
-      <% att = good.attachments.main.first || good.attachments.first %>
-      <%= link_to image_tag(att.image.url(:small)), att.image.url, :title => "#{good.name} ... (#{number_to_currency good.price}) #{good.description}" %>
-    </div>
-  <% end -%>
-  <div class="food">
-    <span>
-      <%= good.name %>
-      <% if good.parameters.count > 0 -%>
-        <% good.parameters.each do |p| -%>
-          <% unless p['value'].blank? -%>
-          (<%= p['name'] %>: <%= p['value'] %> <%= p['unit'] %>)
+<% current_good_path = good_path(:path => @category.url_path, :id => good.id) -%>
+
+<div class="event good <%= good.has_image? ? ' with-image' : '' %><%= good.extra_images.count > 0 ? ' with-extra-images' : '' %>">  
+  <div class="short-text">
+    <% if good.has_image? -%>
+      <div class="image">
+        <%= link_to image_tag(good.image.url(:list_image_big)), good.image.url, :class => 'lightbox', :rel => good.name %>
+        <div class="extra_images">
+          <% good.extra_images.each do |image| -%>
+            <%= link_to image_tag(image.url(:list_image_small)), image.url, :class => 'lightbox', :rel => good.name %>
           <% end -%>
+        </div>
+      </div>
+    <% end -%>
+    
+    <%= content_tag :h2, good.name %>
+    
+    <%= raw good.description %>
+    
+    <% unless good.parameters.blank? -%>
+      <% good.parameters.each do |p| -%>
+        <% unless p['value'].blank? -%>
+        (<%= p['name'] %>: <%= p['value'] %> <%= p['unit'] %>)
         <% end -%>
-      <% end-%>
-    </span>
-    <div class="food-price"><%= number_to_currency good.price %></div>
+      <% end -%>
+    <% end -%>
+    
+    <div class="price">
+      Цена: <span class="money"><%= number_to_currency good.price %></span>
+    </div>
+    
+    <div class="read-full go-to-good">
+      <%= link_to "подробнее", current_good_path %> &rsaquo;
+    </div>
   </div>
-  <div class="food-desc"><%=raw good.description %></div>
-  <div class="clearfix"></div>
-</li>
+</div>
+
+<hr/>

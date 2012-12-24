@@ -1,39 +1,11 @@
-<ul class="submenu">
-  <% @roots.each do |cat| -%>
-  <li>
-    <%= link_to cat.name, category_path(cat.url_path) %>
-	</li>
-  <% end -%>
-</ul>	
+<%= render :partial => 'breadcrumbs' %>
 
 <% if @subcats.count > 0 -%>
-  <div class="prices">
-    <ul class="block-ul">
-  		<%= render :partial => 'category', :collection => @subcats, :as => :cat %>
-  	</ul>
-  </div>
-
-  <% content_for :page_javascript do %>
-    $(function() {
-      $('.food-image a').lightBox();
-      
-      $('.prices-cat').click(function() {
-        $(this).next().toggle('blind', {}, 100, function () {
-          var $li = $(this).closest('li');
-          var $a_pc = $li.children('a.prices-cat');
-
-          if($(this).css('display') != 'none') {
-            $.scrollTo($li, 500, {offset: -50});
-            $a_pc.addClass('prices-cat-selected');
-          } else {
-            $a_pc.removeClass('prices-cat-selected');
-          }
-        });
-
-        return false;
-      });
-    });
-  <% end %>
+  <%= render :partial => 'category', :collection => @subcats %>
+  <%= paginate @subcats %>
 <% else -%>
-  <%=raw @category.description %>
+  <% if @goods -%>
+    <%= render :partial => 'good', :collection => @goods %>    
+    <%= paginate @goods %>
+  <% end -%>
 <% end -%>

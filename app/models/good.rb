@@ -21,7 +21,7 @@ class Good < ActiveRecord::Base
   #default_scope order('position ASC')
   scope :visible, where(:visible => true)
   scope :sorted, order('position asc')
-  scope :site, visible.sorted
+  scope :on_site, visible.sorted
 
   scope :random, lambda { |cnt|
     order('random()').limit(cnt)
@@ -79,7 +79,23 @@ class Good < ActiveRecord::Base
   end
   
   def attachment_styles
-    { :preview => "219x134#", :big => "350x245#", :small => "66x66#", :cart => "101x80", :compare => "184x111#" } 
+    { :list_image_big => "272x172#", :list_image_small => "84x60#" } 
+  end
+  
+  def has_image?
+    attachments.count > 0
+  end
+  
+  def image
+    if has_image?
+      (attachments.main.first || attachments.sorted.first).image
+    else
+      nil
+    end
+  end
+  
+  def extra_images
+    (attachments.sorted[1..-1] || []).map &:image
   end
 
   def status
