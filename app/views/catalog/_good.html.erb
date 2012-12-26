@@ -1,13 +1,22 @@
 <% current_good_path = good_path(:path => @category.url_path, :id => good.id) -%>
 
 <div class="event good <%= good.has_image? ? ' with-image' : '' %><%= good.extra_images.count > 0 ? ' with-extra-images' : '' %>">  
+  <% if single -%>
+    <div class="back-to-list">
+      &lsaquo; <%= link_to "Назад", request.referrer || catalog_path(:path => @category.url_path) %>
+    </div>
+  <% end -%>
+  
   <div class="short-text">
     <% if good.has_image? -%>
       <div class="image">
         <%= link_to image_tag(good.image.url(:list_image_big)), good.image.url, :class => 'lightbox', :rel => good.name %>
         <div class="extra_images">
-          <% good.extra_images.each do |image| -%>
+          <% extra_images = single ? good.extra_images : good.extra_images[0...3] -%>
+          <% i = 0 -%>
+          <% extra_images.each do |image| -%>
             <%= link_to image_tag(image.url(:list_image_small)), image.url, :class => 'lightbox', :rel => good.name %>
+            <%= raw("<br>") if (i += 1) % 3 == 0 -%>
           <% end -%>
         </div>
       </div>
@@ -17,11 +26,15 @@
     
     <%= raw good.description %>
     
-    <% unless good.parameters.blank? -%>
-      <% good.parameters.each do |p| -%>
-        <% unless p['value'].blank? -%>
-        (<%= p['name'] %>: <%= p['value'] %> <%= p['unit'] %>)
+    <% if single -%>
+      <% unless good.parameters.blank? -%>
+        <p>
+        <% good.parameters.each do |p| -%>
+          <% unless p['value'].blank? -%>
+            <strong><%= p['name'] %></strong>: <%= p['value'] %> <%= p['unit'] %><br/>
+          <% end -%>
         <% end -%>
+        </p>
       <% end -%>
     <% end -%>
     
@@ -29,10 +42,14 @@
       Цена: <span class="money"><%= number_to_currency good.price %></span>
     </div>
     
-    <div class="read-full go-to-good">
-      <%= link_to "подробнее", current_good_path %> &rsaquo;
-    </div>
+    <% if !single -%>
+      <div class="read-full go-to-good">
+        <%= link_to "подробнее", current_good_path %> &rsaquo;
+      </div>
+    <% end -%>
   </div>
 </div>
 
+<% if !single -%>
 <hr/>
+<% end -%>

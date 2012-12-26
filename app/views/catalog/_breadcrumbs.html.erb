@@ -4,7 +4,11 @@
     
     <% @category.self_and_ancestors.each do |cat| -%>
       &nbsp;/&nbsp
-      <span class="<%= 'current' if cat == @category %>"><%= link_to cat.name, category_path(cat.url_path) %></span>
+      <span class="<%= 'current' if !@good && cat == @category %>"><%= link_to cat.name, category_path(cat.url_path) %></span>
+    <% end -%>
+    <% if @good -%>
+      &nbsp;/&nbsp
+      <span class="current"><%= @good.name %></span>
     <% end -%>
   </div>
 <% end -%>

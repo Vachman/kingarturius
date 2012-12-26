@@ -5,7 +5,7 @@
   <%= paginate @subcats %>
 <% else -%>
   <% if @goods -%>
-    <%= render :partial => 'good', :collection => @goods %>    
+    <%= render :partial => 'good', :collection => @goods, :locals => {:single => false} %>    
     <%= paginate @goods %>
   <% end -%>
 <% end -%>

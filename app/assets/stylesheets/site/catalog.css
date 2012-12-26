@@ -23,7 +23,8 @@
 .extra_images .image_wrapper {
   -webkit-border-radius: 6px !important;
   -moz-border-radius: 6px !important;
-  border-radius: 6px !important;  
+  border-radius: 6px !important;
+  margin-bottom: 5px;
 }
 
 #content .good {
@@ -48,4 +49,8 @@
 
 #content .good .price .money {
   font-weight: bold;
+}
+
+#content .good .back-to-list {
+  margin: 10px 0px;
 }
