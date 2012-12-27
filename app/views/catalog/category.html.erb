@@ -1,4 +1,5 @@
 <%= render :partial => 'breadcrumbs' %>
+<%= render :partial => 'filter' if @subcats.count == 0 %>
 
 <% if @subcats.count > 0 -%>
   <%= render :partial => 'category', :collection => @subcats %>

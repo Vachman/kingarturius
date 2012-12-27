@@ -54,3 +54,11 @@
 #content .good .back-to-list {
   margin: 10px 0px;
 }
+
+.filter {
+  margin-top: 10px;
+}
+
+.filter .filter_button {
+  float: right;
+}

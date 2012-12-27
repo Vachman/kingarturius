@@ -35,14 +35,11 @@ class Good < ActiveRecord::Base
   }
   scope :to_export, where(:export => true)
 
-  scope :vc0_id_eq, lambda { |id|
-    joins(:virtual_categories).where(['categories_goods.category_id = ?', id])
+  scope :vc_id_eq, lambda { |id|
+    joins(:virtual_categories).
+    where('categories_goods.category_id' => id)
   }
-  scope :vc1_id_eq, lambda { |id|
-    joins(:virtual_categories).where(['categories_goods.category_id = ?', id])
-  }
-  search_methods :vc0_id_eq
-  search_methods :vc1_id_eq
+  search_methods :vc_id_eq
 
   
   validates :category, :presence => true

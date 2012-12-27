@@ -1,0 +1,19 @@
+<%= content_tag :h2, good.name %>
+
+<%= raw good.description %>
+
+<% if show_parameters -%>
+  <% unless good.parameters.blank? -%>
+    <p>
+    <% good.parameters.each do |p| -%>
+      <% unless p['value'].blank? -%>
+        <strong><%= p['name'] %></strong>: <%= p['value'] %> <%= p['unit'] %><br/>
+      <% end -%>
+    <% end -%>
+    </p>
+  <% end -%>
+<% end -%>
+
+<div class="price">
+  Цена: <span class="money"><%= number_to_currency good.price %></span>
+</div>

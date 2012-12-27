@@ -1,0 +1,16 @@
+<div class="filter">
+  <%= form_tag "", :method => :get, :class => "input_form" do %>  
+    <% Category.virtual.each do |c| -%>
+      <%= label :filter, c.link, c.name %>
+      <%= collection_select :filter, c.link, 
+                            c.children, :link, :name, {
+                              :include_blank => true, 
+                              :selected => params[:filter].try(:[], c.link)
+      } -%>
+    <% end -%>
+    
+    <div class="filter_button">
+      <%= submit_tag "Поиск", :class => 'button' %>
+    </div>
+  <% end %>
+</div>

@@ -1,3 +1,12 @@
 <%= render :partial => 'breadcrumbs' %>
 
-<%= render :partial => 'good', :locals => {:good => @good, :single => true} %>
+<div class="event good <%= @good.has_image? ? ' with-image' : '' %><%= @good.extra_images.count > 0 ? ' with-extra-images' : '' %>">  
+  <div class="back-to-list">
+    &lsaquo; <%= link_to "Назад", request.referrer || catalog_path(:path => @category.url_path) %>
+  </div>
+  
+  <div class="short-text">
+    <%= render :partial => 'good_images', :locals => {:good => @good, :limit => nil}%>
+    <%= render :partial => 'good_description', :locals => {:good => @good, :show_parameters => true}%>    
+  </div>
+</div>

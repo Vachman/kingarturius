@@ -1,0 +1,61 @@
+.input_form input,
+.input_form .styled-select {
+  width: 265px;
+  height: 28px;
+  border: 1px solid #aa8f71;
+  background-color: #c9a888;
+  
+  -webkit-border-radius: 14px;
+  -moz-border-radius:14px;
+  border-radius: 14px;
+  
+  -webkit-box-shadow: 1px 1px 2px #8c7559;
+  -moz-box-shadow: 1px 1px 2px #8c7559; 
+  box-shadow: 1px 1px 2px #8c7559;
+  
+  padding: 0px 14px;
+  display: inline-block;
+}
+
+.input_form input {
+  font-size: 14px;
+  color: #53433D;  
+}
+
+.input_form input:focus,
+.input_form .styled-select select:focus {
+  outline: none;
+}
+
+.input_form input.button {
+  width: 145px;
+  border: 1px solid #f0d8c1;
+  background-color: #e8c8a9;
+  
+  color: #aa8f71;
+  
+  -webkit-text-shadow: #f3e5d8 0px 1px 1px;
+  -moz-text-shadow: #f3e5d8 0px 1px 1px; 
+  text-shadow: #f3e5d8 0px 1px 1px;
+}
+
+.input_form .styled-select {
+  background-image: url(/assets/site/select-arrow.png);
+  background-repeat: no-repeat;
+  background-position: 271px 10px;
+  overflow: hidden;
+}
+
+.input_form .styled-select select {
+  background: transparent;
+  width: 283px;
+  height: 28px;
+  
+  padding: 0px;
+  border: none;
+  
+  font-size: 14px;
+  color: #53433D;  
+  
+  -webkit-appearance: none;
+}

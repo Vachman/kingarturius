@@ -1,12 +1,13 @@
+<% current_category_path = category_path(:path => category.url_path, :filter => params[:filter]) -%>
 <div class="event<%= category.has_image? ? ' with-image' : '' %>">  
   <div class="short-text">
     <% if category.has_image? -%>
       <div class="image">
-        <%= link_to image_tag(category.image.url(:list_image)), category_path(:path => category.url_path) %>
+        <%= link_to image_tag(category.image.url(:list_image)), current_category_path %>
       </div>
     <% end -%>
     
-    <%= content_tag :h2, link_to(category.name, category_path(:path => category.url_path)) %>
+    <%= content_tag :h2, link_to(category.name, current_category_path) %>
     
     <%= raw category.description %>
   </div>

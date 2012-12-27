@@ -12,6 +12,7 @@ $(function() {
   $(myHeading).children('.hr').css({width: '' + (myTextWidth - 10) + 'px'});
   
   $('img').wrap('<div class="image_wrapper" />');
+  $('.input_form select').wrap('<div class="styled-select" />');
   
   $('.image a.lightbox').lightBox();
 });
