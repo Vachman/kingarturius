@@ -4,7 +4,7 @@
       <%= label :filter, c.link, c.name %>
       <%= collection_select :filter, c.link, 
                             c.children, :link, :name, {
-                              :include_blank => true, 
+                              :include_blank => 'Все', 
                               :selected => params[:filter].try(:[], c.link)
       } -%>
     <% end -%>
