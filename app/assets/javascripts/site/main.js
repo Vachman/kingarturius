@@ -13,6 +13,9 @@ $(function() {
   
   $('img').wrap('<div class="image_wrapper" />');
   $('.input_form select').wrap('<div class="styled-select" />');
+  $('.input_form.autosubmit select').change(function() {
+    $(this).closest('form').submit();
+  });
   
   $('.image a.lightbox').lightBox();
 });

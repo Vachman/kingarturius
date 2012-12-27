@@ -1,5 +1,5 @@
 <div class="filter">
-  <%= form_tag "", :method => :get, :class => "input_form" do %>  
+  <%= form_tag "", :method => :get, :class => "input_form autosubmit" do %>  
     <% Category.virtual.each do |c| -%>
       <%= label :filter, c.link, c.name %>
       <%= collection_select :filter, c.link, 
@@ -9,7 +9,7 @@
       } -%>
     <% end -%>
     
-    <div class="filter_button">
+    <div class="filter_button" style="display: none">
       <%= submit_tag "Поиск", :class => 'button' %>
     </div>
   <% end %>
