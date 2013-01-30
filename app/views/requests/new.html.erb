@@ -1,1 +1,46 @@
-NEW
+<%= content_tag :h1, 'Оставьте заявку' %>
+
+<%=
+#@request.errors.inspect 
+%>
+
+<%= form_for @request, :html => {:class => 'input_form'} do |f| %>  
+  <div class="field_block">
+    <%= f.label :full_name %>
+    <%= f.text_field :full_name %>    
+  </div>
+
+  <div class="field_block">  
+    <%= f.fields_for :information do |inf| %>
+      <%= inf.label :department, t(:department, :scope => Request::T_INF_SCOPE) %>
+      <%= inf.select :department, Request::DEPARTMENTS.map{ |a| [t(a, :scope => Request::T_DEP_SCOPE), a]}, {:include_blank => true} %>
+    <% end %>
+  </div>
+  
+  <div class="field_block">
+    <%= f.label :request_type %>
+    <%= f.select :request_type, Request::TYPES.map{ |a| [t(a, :scope => Request::T_TYP_SCOPE), a]}, {:include_blank => true} %>
+  </div>
+  
+  <div class="field_block">
+    <%= f.label :phone %>
+    <%= f.text_field :phone %>
+  </div>
+  
+  <div class="field_block">
+    <%= f.fields_for :information do |inf| %>
+      <%= inf.label :text, t(:text, :scope => Request::T_INF_SCOPE) %>
+      <%= inf.text_area :text %>
+    <% end %>
+  </div>
+  
+  <div class="field_block">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+  
+  <div class="field_block">
+    <%= f.submit "Отправить", :class => 'button' %>
+  </div>
+<% end %>
+  

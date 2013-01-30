@@ -50,8 +50,8 @@
         	</div>
       	
         	<div id="form-buttons">
-        	  <input type="button" value="Оставить заявку" id="left-order-button">
-        	  <input type="button" value="Экспресс оценка недвижимости" id="express-pricing-button">
+        	  <%= button_to "Оставить заявку", new_request_path, :method => :get, :id => "left-order-button"%>
+        	  <%= button_to "Экспресс оценка недвижимости", express_requests_path, :method => :get, :id => "express-pricing-button"%>
         	  <input type="button" value="Купить жилье по ипотеке" id="ipoteka-button">
         	</div>
       	</div>

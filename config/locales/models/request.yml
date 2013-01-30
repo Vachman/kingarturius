@@ -11,7 +11,13 @@ ru:
         updated_at: 'Обновлена'
         phone: "Номер телефона"
         email: "Эл. почта"
-        information: "Инофомация"
+        information:
+          text: "Текст"
+          department: "Отдел"
+        types:
+          type1: "Тип 1"
+        departments:
+          one: "Первая"
 
   active_admin:
     filters:

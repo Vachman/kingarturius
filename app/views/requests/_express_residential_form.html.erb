@@ -1,0 +1,68 @@
+<%= form_for @request, :html => {:class => 'input_form'} do |f| %>  
+  <%= f.fields_for :information do |inf| %>
+    <div class="field_block">  
+      <%= inf.label :direciton, t(:direciton, :scope => Request::T_INF_SCOPE) %>
+      <%= inf.select :direciton, Request::DIRECTIONS.map{ |a| [t(a, :scope => Request::T_DIR_SCOPE), a]}, {:include_blank => true} %>
+    </div>
+    
+    <div class="field_block">  
+      <%= inf.label :from_mkad, t(:from_mkad, :scope => Request::T_INF_SCOPE) %>
+      <%= inf.text_field :from_mkad %>
+    </div>
+  
+    <div class="field_block">  
+      <%= inf.label :town, t(:town, :scope => Request::T_INF_SCOPE) %>
+      <%= inf.text_field :town %>
+    </div>
+    
+    <div class="field_block">  
+      <%= inf.label :goal, t(:goal, :scope => Request::T_INF_SCOPE) %>
+      <%= inf.select :goal, Request::GOALS.map{ |a| [t(a, :scope => Request::T_GOA_SCOPE), a]}, {:include_blank => true} %>
+    </div>
+    
+    <div class="field_block">  
+      <%= inf.label :house_area, t(:house_area, :scope => Request::T_INF_SCOPE) %>
+      <%= inf.text_field :house_area %>
+    </div>
+    
+    <div class="field_block">
+      <%= f.label :phone %>
+      <%= f.text_field :phone %>
+    </div>
+    
+    <div class="field_block">  
+      <%= inf.label :floor_cnt, t(:floor_cnt, :scope => Request::T_INF_SCOPE) %>
+      <%= inf.text_field :floor_cnt %>
+    </div>
+    
+    <div class="field_block">
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </div>
+    
+    <div class="field_block">  
+      <%= inf.label :matherial, t(:matherial, :scope => Request::T_INF_SCOPE) %>
+      <%= inf.select :matherial, Request::MATHERIALS.map{ |a| [t(a, :scope => Request::T_MAT_SCOPE), a]}, {:include_blank => true} %>
+    </div>
+    
+    <div class="field_block">
+      <%= f.label :full_name %>
+      <%= f.text_field :full_name %>    
+    </div>
+    
+    <div class="field_block">  
+      <%= inf.label :territory_area, t(:territory_area, :scope => Request::T_INF_SCOPE) %>
+      <%= inf.text_field :territory_area %>
+    </div>
+    
+    <div class="field_block large">
+      <%= inf.label :other_info, t(:other_info, :scope => Request::T_INF_SCOPE) %>
+      <%= inf.text_area :other_info %>
+    </div>    
+  <% end %>
+
+  <div class="field_block large">
+    <%= f.submit "Отправить", :class => 'button' %>
+  </div>
+<% end %>
+  

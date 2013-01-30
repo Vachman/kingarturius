@@ -1,1 +1,10 @@
-EXPRESS
+<%= content_tag :h1, 'Экспресс оценка недвижимости' %>
+
+<ul class="request_types">
+  <li><%= link_to_unless_current 'Квартиры в Москве', :action => 'express_moscow' %></li>
+  <li><%= link_to_unless_current 'Квартиры в Московской области', :action => 'express_region' %></li>
+  <li><%= link_to_unless_current 'Коммерческая недвижимость', :action => 'express_commerce' %></li>
+  <li><%= link_to_unless_current 'Загородная недвижимость', :action => 'express_residential' %></li>
+</ul>
+
+<%= render :partial => "#{session[:action]}_form" %>

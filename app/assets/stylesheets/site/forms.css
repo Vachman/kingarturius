@@ -1,4 +1,33 @@
+.input_form .field_block {
+  display: block;
+  float: left;
+  width: 50%;
+  margin-bottom: 10px;
+}
+
+.input_form .field_block label {
+  display: block;
+  font-size: 14px;
+  color: #53433d;
+  padding-left: 14px;
+}
+
+.input_form .field_block.large {
+  width: 100%;
+}
+
+.input_form .field_block.large textarea {
+  width: 586px;
+}
+
+.input_form .field_block .button {
+  float: right;
+  margin-right: 26px;
+  margin-top: 26px;
+}
+
 .input_form input,
+.input_form textarea,
 .input_form .styled-select {
   width: 265px;
   height: 28px;
@@ -17,12 +46,19 @@
   display: inline-block;
 }
 
-.input_form input {
+.input_form input,
+.input_form textarea {
   font-size: 14px;
   color: #53433D;  
 }
 
+.input_form textarea {
+  height: 80px;
+  padding: 4px 14px;
+}
+
 .input_form input:focus,
+.input_form textarea:focus,
 .input_form .styled-select select:focus {
   outline: none;
 }
@@ -32,7 +68,8 @@
   border: 1px solid #f0d8c1;
   background-color: #e8c8a9;
   
-  color: #aa8f71;
+  /*color: #aa8f71;*/
+  color: #53433d;
   
   -webkit-text-shadow: #f3e5d8 0px 1px 1px;
   -moz-text-shadow: #f3e5d8 0px 1px 1px; 

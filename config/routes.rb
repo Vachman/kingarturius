@@ -32,7 +32,14 @@ RailsShop::Application.routes.draw do
   end
   
   resources :requests, :only => [:new, :create] do
-    get :express, :on => :collection 
+    collection do
+      get :express
+      
+      get :express_moscow
+      get :express_region
+      get :express_commerce
+      get :express_residential
+    end
   end
   
   root :to => 'site#index'
