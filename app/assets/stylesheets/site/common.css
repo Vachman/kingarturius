@@ -47,3 +47,28 @@
 #content .pagination .prev {
   left: 0px;
 }
+
+#content .request_types {
+  display: block;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 13px;
+  float: left;
+  width: 705px;
+  position: relative;
+  left: -25px;
+  padding-bottom: 20px;
+}
+
+#content .request_types li {
+  display: block;
+  float: left;
+  padding-right: 5px;
+}
+
+#content .request_types li a,
+#content .request_types li a:visited {
+  color: #53433d;
+}
+
