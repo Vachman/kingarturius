@@ -1,7 +1,11 @@
 class SiteController < ApplicationController
   def index
-    @page = StaticPage.find_by_link('index') || StaticPage.root
-    set_meta(@page)
+    @page = StaticPage.find_by_link('catalog') || StaticPage.root
+    if @page.redirect_url.blank?
+      set_meta(@page)
+    else
+      redirect_to @page.redirect_url
+    end
   end
 
   def static_page
