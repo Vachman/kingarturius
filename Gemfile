@@ -35,6 +35,8 @@ gem 'ckeditor'
 gem 'paperclip'
 #gem "simple_captcha", :git => 'git://github.com/izzm/simple-captcha.git'
 
+gem "simple_captcha"
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
