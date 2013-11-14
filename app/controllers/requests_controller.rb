@@ -24,7 +24,7 @@ class RequestsController < ApplicationController
     @request = Request.new(params[:request])
     
     if @request.save
-      RequestMailer.request_email(@request).deliver
+      RequestMailer.request_email(@request).deliver!
       redirect_to root_url
     else
       render :action => session[:action]

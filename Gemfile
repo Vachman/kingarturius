@@ -33,7 +33,7 @@ gem 'acts_as_breadcrumbs', :git => 'git://github.com/izzm/acts_as_breadcrumbs.gi
 
 gem 'ckeditor'
 gem 'paperclip'
-gem "simple_captcha", :git => 'git://github.com/izzm/simple-captcha.git'
+#gem "simple_captcha", :git => 'git://github.com/izzm/simple-captcha.git'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

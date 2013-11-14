@@ -2,6 +2,11 @@
   <%= f.inputs :info do %>
     <%= f.input :parent, :as => :nested_set if (@category.new_record? && @category.parent_id.nil?) || @category.can_move? %>
     <%= f.input :name %>
+		<%= f.input :teaser, :as => :ckeditor, 
+                        :input_html => { :cols => 0, 
+                                         :width => '77%',
+                                         :resize_dir => 'vertical'} %>
+    
     <%= f.input :description, :as => :ckeditor, 
                         :input_html => { :cols => 0, 
                                          :width => '77%',

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121221143439) do
+ActiveRecord::Schema.define(:version => 20131114104332) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(:version => 20121221143439) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "url_path",        :limit => 2000
+    t.text     "teaser"
   end
 
   add_index "categories", ["parent_id"], :name => "index_categories_on_parent_id"

@@ -1,12 +1,15 @@
 <%= render :partial => 'breadcrumbs' %>
 <%= render :partial => 'filter' if @subcats.count == 0 %>
 
-<% if @subcats.count > 0 -%>
+<br>
+<%= raw @category.try(:description) %>
+
+<% if @subcats.count > 0 -%>	
   <%= render :partial => 'category', :collection => @subcats %>
   <%= paginate @subcats %>
 <% else -%>
   <% if @goods -%>
-    <%= render :partial => 'good', :collection => @goods, :locals => {:single => false} %>    
+    <%= render :partial => 'good', :collection => @goods, :locals => {:single => false} %> 
     <%= paginate @goods %>
   <% end -%>
 <% end -%>
