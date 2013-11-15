@@ -24,7 +24,7 @@ gem 'meta_search',    '>= 1.1.0.pre'
 #gem 'devise', '1.5.1'
 gem 'meta-tags', :require => 'meta_tags'
 gem 'kaminari'
-
+gem "rmagick", "~> 2.13.1"
 gem 'nested_set'
 gem 'acts_as_list'
 gem 'formtastic_nested_set', :git => 'git://github.com/izzm/formtastic_nested_set.git'
